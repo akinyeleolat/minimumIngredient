@@ -1,3 +1,5 @@
+/* eslint-disable no-useless-escape */
+/* eslint-disable consistent-return */
 /**
  * This function check for space.
  * @param {number} value any

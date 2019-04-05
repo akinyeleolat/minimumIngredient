@@ -1,3 +1,4 @@
+/* eslint-disable no-plusplus */
 import * as validate from './validate';
 /**
    * This is a validation for party creation

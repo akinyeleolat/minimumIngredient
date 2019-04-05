@@ -2,12 +2,11 @@ import dotenv from 'dotenv';
 import express from 'express';
 import cors from 'cors';
 import morgan from 'morgan';
-import getJSON from 'get-json';
 import router from './routes';
 
 const app = express();
 dotenv.config();
-const port = process.env.PORT || 3000;
+const PORT = 8080;
 app.use(morgan('tiny'));
 app.use(cors());
 app.use(express.json());
@@ -28,7 +27,8 @@ app.use((req, res, next) => {
   });
   next();
 });
-app.listen(port, () => {
-  console.log(`Running on port ${port}...`);
+app.listen(PORT, () => {
+  // eslint-disable-next-line no-console
+  console.log(`Running on port ${PORT}...`);
 });
 export default app;

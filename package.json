@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "babel-node": "babel-node --presets=env",
-    "start": "node -- server/app.js",
+    "start": "babel-node -- server/app.js",
     "dev": "nodemon server/app.js --exec babel-node",
     "lint": "eslint ./ --fix",
     "postinstall": "npm install babel-cli babel-preset-env babel-register"
@@ -29,6 +29,13 @@
   },
   "homepage": "https://github.com/akinyeleolat/minimumIngredient#readme",
   "dependencies": {
+    "@babel/cli": "^7.2.3",
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^10.0.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-register": "^6.26.0",
     "body-parser": "^1.18.3",
     "cors": "^2.8.4",
     "dotenv": "^6.0.0",
@@ -40,13 +47,6 @@
     "natural": "^0.6.2"
   },
   "devDependencies": {
-    "@babel/cli": "^7.2.3",
-    "babel-cli": "^6.26.0",
-    "babel-core": "^6.26.3",
-    "babel-eslint": "^10.0.1",
-    "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "babel-preset-env": "^1.7.0",
-    "babel-register": "^6.26.0",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jsx-a11y": "^6.1.1",
     "eslint-plugin-react": "^7.11.1",

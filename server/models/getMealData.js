@@ -1,17 +1,18 @@
+/* eslint-disable no-plusplus */
 /**
    * @function getMealData Get meal data from themealdb.com API base on meal information
    */
-const getMealData = (meal, res) => {
+const getMealData = (meal, mealId, res) => {
   if (meal.meals === null || undefined) {
     return res.status(400).json({
       status: 'failed',
-      error: 'No meal details for one of the id',
+      error: 'No meal details for one of the meal id supplied',
     });
   }
   if (meal.meals.length === 0) {
     return res.status(400).json({
       status: 'failed',
-      error: 'No meal details for one of the id',
+      error: 'No meal details for one of the meal id supplied',
     });
   }
   const id = parseInt(meal.meals[0].idMeal, 10);

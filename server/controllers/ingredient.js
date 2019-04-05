@@ -1,12 +1,12 @@
+/* eslint-disable no-plusplus */
 /** ingredient controller class */
 import getJSON from 'get-json';
-import getMealInfo from '../models/getMealInfo';
 import getMealData from '../models/getMealData';
 import getMinimumIngredient from './getMinimumIngredient';
 
 class IngredientController {
   /**
-   * @function getMeal Get meal information from themealdb.com API and return meal with minimum ingredient
+   * @function getMeal return meal with minimum ingredient from themeal.db API
    * @memberof IngredientController
    * @static
    */
@@ -16,11 +16,8 @@ class IngredientController {
     let i;
     const meal = [];
     let menuList;
-    let mealData = [];
+    const mealData = [];
     const errorMsg = [];
-    const sendError = ((error) => {
-      errorMsg.push(error);
-    });
 
     for (i = 0; i < id.length; i++) {
       id[i] = id[i].toString().replace(/\s+/g, '');
@@ -34,7 +31,7 @@ class IngredientController {
         .then((response) => {
           if (response) {
             meal[i] = response;
-            menuList = getMealData(meal[i], res);
+            menuList = getMealData(meal[i], mealId[i], res);
           }
           if (i === mealId.length) {
             mealData.push(menuList);
@@ -48,9 +45,9 @@ class IngredientController {
           if (errorMsg.length === mealId.length) {
             return res.status(400).json(errorMsg);
           }
+          return errorMsg;
         });
     }
-    // getMinimumIngredient(menuList, res);
   }
 
   /**
@@ -58,6 +55,7 @@ class IngredientController {
    * @memberof IngredientController
    * @static
    */
+  // eslint-disable-next-line consistent-return
   static getMealById(req, res) {
     const { id } = req.params;
     if (!(/^[\d]+$/.test(id))) {
@@ -76,12 +74,10 @@ class IngredientController {
           success: 'true',
           mealData,
         });
-      }).catch((error) => {
-        return res.status(400).json({
-          success: 'failed',
-          error,
-        });
-      });
+      }).catch(error => res.status(400).json({
+        success: 'failed',
+        error,
+      }));
   }
 }
 export default IngredientController;

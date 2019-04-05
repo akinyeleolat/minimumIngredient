@@ -10,8 +10,6 @@ const getMealInfo = (mealId) => {
       meal = response;
       return meal;
     })
-    .catch((error) => {
-      return error;
-    });
+    .catch(error => error);
 };
 export default getMealInfo;
