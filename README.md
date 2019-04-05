@@ -38,61 +38,41 @@ MinimumIngredeient is a RESTful API for getting meal with minimum Ingredients fr
 <li>Open terminal</li>
 <li>cd minimumIngredient</li>
 <li>git checkout develop</li>
-<li>Build Docker Image
-<ul>
-<li>Go to Directory that has your Docker file (ignore if you are already there, you can confirm by running 
+</ul>
+
+## 1. Build Docker Image
+### Go to Directory that has your Docker file (ignore if you are already there, you can confirm by running 
 ```bash 
 $ ls
-```</li>
-<li>Run this command
+```
+### Run this command
 ```bash
 $ docker build -t <your username>/minimumIngredient .
 ```
-</li>
-</ul>
-</li>
-<li>Run Docker Image</li>
-<ul>
-<li>Run the following command </li>
-<li>```bash
+## 2. Run Docker Image</li>
+### Run the following command 
+```bash
 $ docker run -p 8081:8080 -d <your username>/minimumIngredient
-```</li>
-<li>Print the output of your app</li>
-<li>
-# Get container ID
+```
+## Print the output of your app
+
+### Get container ID
 ```bash
 $ docker ps
 ```
-# Print app output
+### Print app output
 ```bash
 $ docker logs <container id>
 ```
-</li>
-</ul>
-</ul>
+
 
 # Test with Postman
-<ul>
-<li>install POSTMAN app</li>
-<li>Get the port for the docker container
+### 1. install POSTMAN app
+### 2. Get the port for the docker container
 ```bash
 $ docker ps
-```</li>
-<li>navigate to localhost:PORT/endpoints on POSTMAN</li>
-<li>Stop the container</li>
-```bash
-$ docker stop your-container-id
 ```
-<li> Remove the container</li>
-```bash
-$ docker rm your-container-id
-```
-<li> Remove the image</li>
-```bash
-$ docker rmi <your username>/minimumIngredient
-```
-<li>
-</ul>
+### 3. navigate to localhost:PORT/endpoints on POSTMAN
 
 # API Endpoint Route
 <table>
