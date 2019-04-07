@@ -1,4 +1,4 @@
-/* eslint-disable no-plusplus */
+/* eslint-disable no-loop-func */
 /** ingredient controller class */
 import getJSON from 'get-json';
 import getMealData from '../models/getMealData';
@@ -11,23 +11,20 @@ class IngredientController {
    * @static
    */
   static getMeal(req, res) {
-    const id = req.query.mealID.split(',');
-    const mealId = [];
+    let id = req.query.mealID.split(',');
+    let mealId = [];
     let i;
     const meal = [];
     let menuList;
     const mealData = [];
     const errorMsg = [];
-
-    for (i = 0; i < id.length; i++) {
-      id[i] = id[i].toString().replace(/\s+/g, '');
-      mealId.push(parseInt(id[i], 10));
-    }
-    for (i = 0; i < mealId.length; i++) {
+    id.forEach((num) => {
+      id = num.toString().replace(/\s+/g, '');
+      mealId = [...mealId, (parseInt(id, 10))];
+    });
+    for (i = 0; i < mealId.length; i += 1) {
       const url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealId[i]}`;
-      // eslint-disable-next-line no-loop-func
       getJSON(url)
-        // eslint-disable-next-line no-loop-func
         .then((response) => {
           if (response) {
             meal[i] = response;
@@ -39,7 +36,6 @@ class IngredientController {
               getMinimumIngredient(mealData, res);
             }
           }
-        // eslint-disable-next-line no-loop-func
         }).catch((_error) => {
           errorMsg.push(_error);
           if (errorMsg.length === mealId.length) {
